@@ -4,6 +4,7 @@ import ContactForm from './components/contactForm';
 import ContactList from './components/contactList';
 import Filter from './components/Filter';
 import styles from './App.module.css';
+import helpers from './helpers/helpers';
 
 class App extends Component {
   state = {
@@ -12,15 +13,15 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const contacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(contacts);
+    const contacts = helpers.getFromLS('contacts');
 
-    this.setState({ contacts: parsedContacts });
+    this.setState({ contacts: contacts });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    const { contacts } = this.state;
+    if (contacts !== prevState.contacts) {
+      helpers.saveToLS('contacts', contacts);
     }
   }
 
