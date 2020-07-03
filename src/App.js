@@ -8,12 +8,7 @@ import helpers from './helpers/helpers';
 
 class App extends Component {
   state = {
-    contacts: [
-      {
-        name: 'qwerqw',
-        number: 'sdfsd',
-      },
-    ],
+    contacts: [],
     filter: '',
   };
 
@@ -63,13 +58,13 @@ class App extends Component {
   };
 
   render() {
-    const normalizedFilter = this.state.filter.toLowerCase();
+    const { contacts, filter } = this.state;
 
-    const visibleContacts = this.state.contacts.filter(contact =>
+    const normalizedFilter = filter.toLowerCase();
+
+    const visibleContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter),
     );
-
-    const { contacts, filter } = this.state;
 
     return (
       <div className={styles.wrapper}>
