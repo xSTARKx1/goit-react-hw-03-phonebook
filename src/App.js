@@ -8,7 +8,12 @@ import helpers from './helpers/helpers';
 
 class App extends Component {
   state = {
-    contacts: [],
+    contacts: [
+      {
+        name: 'qwerqw',
+        number: 'sdfsd',
+      },
+    ],
     filter: '',
   };
 
