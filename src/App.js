@@ -74,10 +74,12 @@ class App extends Component {
         {contacts.length >= 2 ? (
           <Filter changeFilter={this.changeFilter} value={filter} />
         ) : null}
-        <ContactList
-          contacts={visibleContacts}
-          onDeleteContact={this.deleteContact}
-        />
+        {contacts.length > 0 && (
+          <ContactList
+            contacts={visibleContacts}
+            onDeleteContact={this.deleteContact}
+          />
+        )}
       </div>
     );
   }
