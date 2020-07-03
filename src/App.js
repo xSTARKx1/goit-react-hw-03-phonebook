@@ -58,13 +58,13 @@ class App extends Component {
   };
 
   render() {
-    const { contacts, filter } = this.state;
+    const normalizedFilter = this.state.filter.toLowerCase();
 
-    const normalizedFilter = filter.toLowerCase();
-
-    const visibleContacts = contacts.filter(contact =>
+    const visibleContacts = this.state.contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter),
     );
+
+    const { contacts, filter } = this.state;
 
     return (
       <div className={styles.wrapper}>
