@@ -1,0 +1,11 @@
+.remove_contact_btn {
+  margin-left: 14px;
+}
+
+.contact {
+  margin-bottom: 15px;
+}
+
+.contact:last-child {
+  margin-bottom: 0;
+}
