@@ -4,7 +4,7 @@ import ContactForm from './components/contactForm';
 import ContactList from './components/contactList';
 import Filter from './components/Filter';
 import styles from './App.module.css';
-import helpers from './helpers/helpers';
+import { getFromLS, saveToLS } from './helpers/helpers';
 
 class App extends Component {
   state = {
@@ -13,9 +13,9 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const contacts = helpers.getFromLS('contacts');
+    const contacts = getFromLS('contacts');
 
-    if (contacts === null) {
+    if (!contacts) {
       return;
     }
     this.setState({ contacts: contacts });
@@ -24,7 +24,7 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { contacts } = this.state;
     if (contacts !== prevState.contacts) {
-      helpers.saveToLS('contacts', contacts);
+      saveToLS('contacts', contacts);
     }
   }
 

@@ -1,4 +1,4 @@
-const saveToLS = (key, value) => {
+export const saveToLS = (key, value) => {
   try {
     localStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
@@ -6,7 +6,7 @@ const saveToLS = (key, value) => {
   }
 };
 
-const getFromLS = key => {
+export const getFromLS = key => {
   try {
     const items = localStorage.getItem(key);
     return items ? JSON.parse(items) : null;
@@ -14,5 +14,3 @@ const getFromLS = key => {
     throw new Error();
   }
 };
-
-export default { saveToLS, getFromLS };
