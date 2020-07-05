@@ -15,7 +15,7 @@ class App extends Component {
   componentDidMount() {
     const contacts = helpers.getFromLS('contacts');
 
-    if (!contacts.length) {
+    if (contacts === null) {
       return;
     }
     this.setState({ contacts: contacts });
